@@ -7,25 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <TextView
+        android:id="@+id/expression_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#888888"
+        android:gravity="end"
+        android:padding="8dp"
+        tools:text="12 + 7 ×"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
         android:id="@+id/result_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:textSize="32sp"
-        app:layout_constraintHeight_percent=".2"
-        tools:text="1234"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_vertical"
+        android:textColor="#FFFFFF"
+        android:gravity="center_vertical|end"
         android:padding="8dp"
-        />
+        tools:text="1234"
+        app:layout_constraintTop_toBottomOf="@+id/expression_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".15"/>
+
     <LinearLayout
         android:id="@+id/First_line"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent=".2"
         app:layout_constraintTop_toBottomOf="@+id/result_view"
-        android:weightSum="4"
-        >
+        android:weightSum="5">
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_7"
             android:layout_width="0dp"
@@ -36,7 +49,7 @@
             android:text="7"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -46,7 +59,7 @@
             android:text="8"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -56,7 +69,7 @@
             android:text="9"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -66,7 +79,17 @@
             android:text="÷"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_clear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="C"
+            android:backgroundTint="#FF4444"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:onClick="onClearClick"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/second_line"
@@ -74,8 +97,7 @@
         android:layout_height="0dp"
         app:layout_constraintHeight_percent=".2"
         app:layout_constraintTop_toBottomOf="@+id/First_line"
-        android:weightSum="4"
-        >
+        android:weightSum="5">
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -85,7 +107,7 @@
             android:text="4"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -95,7 +117,7 @@
             android:text="5"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -105,7 +127,7 @@
             android:text="6"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -115,7 +137,17 @@
             android:text="×"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_backspace"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="⌫"
+            android:backgroundTint="#555555"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:onClick="onBackspaceClick"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/therd_line"
@@ -123,8 +155,7 @@
         android:layout_height="0dp"
         app:layout_constraintHeight_percent=".2"
         app:layout_constraintTop_toBottomOf="@+id/second_line"
-        android:weightSum="4"
-        >
+        android:weightSum="5">
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -134,7 +165,7 @@
             android:text="1"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -144,7 +175,7 @@
             android:text="2"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -154,7 +185,7 @@
             android:text="3"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -164,7 +195,17 @@
             android:text="-"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_percent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="%"
+            android:backgroundTint="@color/Eq_button"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:onClick="onPercentClick"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/Forth_line"
@@ -172,8 +213,7 @@
         android:layout_height="0dp"
         app:layout_constraintHeight_percent=".2"
         app:layout_constraintTop_toBottomOf="@+id/therd_line"
-        android:weightSum="4"
-        >
+        android:weightSum="5">
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -183,7 +223,7 @@
             android:text="0"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -193,17 +233,17 @@
             android:text="."
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="@color/Num_Button"
+            android:backgroundTint="@color/Eqaul_Button"
             android:onClick="onEqualClick"
             android:text="="
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -213,6 +253,16 @@
             android:text="+"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_brackets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="()"
+            android:backgroundTint="@color/Eq_button"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:onClick="onBracketsClick"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
